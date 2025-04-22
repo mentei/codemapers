@@ -1,0 +1,8 @@
+node_modules
+.next
+.vscode
+.git
+Dockerfile
+*.ts
+*.tsx
+!temp/**
