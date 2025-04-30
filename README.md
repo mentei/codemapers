@@ -1,36 +1,108 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚀 CodeMapers
 
-## Getting Started
+**Empower your coding journey with a multi-language development platform.**  
+CodeMapers offers a collaborative environment supporting various programming languages, integrated with Docker for seamless development and deployment.
 
-First, run the development server:
+## 🌐 Live Demo
 
-```bash
+[https://codemapers.vercel.app](https://codemapers.vercel.app)
+
+## 🧰 Tech Stack
+
+- **Frontend**: Next.js 14, Tailwind CSS
+- **Authentication**: NextAuth.js with Google OAuth
+- **Containerization**: Docker, Docker Compose
+- **Deployment**: Vercel (Frontend), Google Cloud (Backend Services)
+- **Languages Supported**: Rust, Java, C, C++, JavaScript, Go, Python
+- **AI Integration**: Ollama for LLM support
+
+## 📁 Project Structure
+
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) (v18 or later)
+- [Docker](https://www.docker.com/)
+- [Docker Compose](https://docs.docker.com/compose/)
+
+### Installation
+
+1. **Clone the repository:**
+
+   ```bash
+   git clone https://github.com/rahulpatle-sol/codemapers.git
+   cd codemapers
+npm install
+Install dependencies:
+
+bash
+कॉपी करें
+बदलें
+npm install
+Set up environment variables:
+
+Create a .env file in the root directory and add your configuration:
+
+env
+कॉपी करें
+बदलें
+NEXTAUTH_URL=https://codemapers.vercel.app
+GOOGLE_CLIENT_ID=your_google_client_id
+GOOGLE_CLIENT_SECRET=your_google_client_secret
+Run the development server:
+
+bash
+कॉपी करें
+बदलें
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Open http://localhost:3000 to view the application.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+🐳 Docker Setup
+Build and Run Containers
+Navigate to the app directory:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+bash
+कॉपी करें
+बदलें
+cd app
+Start all services:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+bash
+कॉपी करें
+बदलें
+docker-compose up --build
+This will build and run containers for all supported languages and the Ollama AI service.
 
-## Learn More
+Accessing Services
+Ollama Chat: http://localhost:11434
 
-To learn more about Next.js, take a look at the following resources:
+Other language services can be accessed as per their respective configurations.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+☁️ Deployment
+Frontend (Vercel)
+The frontend is deployed on Vercel. Ensure that your environment variables are set in the Vercel dashboard for seamless deployment.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Backend Services (Google Cloud)
+For deploying Dockerized backend services:
 
-## Deploy on Vercel
+Build Docker images:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+bash
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+docker build -t gcr.io/your-project-id/codemapers-app .
+Push to Google Container Registry:
+
+bash
+
+docker push gcr.io/your-project-id/codemapers-app
+Deploy to Cloud Run:
+
+
+gcloud run deploy codemapers \
+  --image gcr.io/your-project-id/codemapers-app \
+  --platform managed \
+  --region asia-south1 \
+  --allow-unauthenticated
+Replace your-project-id with your actual Google Cloud project ID.
