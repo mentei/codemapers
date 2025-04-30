@@ -1,1 +1,1 @@
-echo H from Bash
+echo Hello from Bash

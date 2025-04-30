@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  rust:
+    build: ./rust
+    container_name: rust_app
+    restart: unless-stopped
+
+  java:
+    build: ./java
+    container_name: java_app
+    restart: unless-stopped
+
+  c:
+    build: ./c
+    container_name: c_app
+    restart: unless-stopped
+
+  cpp:
+    build: ./cpp
+    container_name: cpp_app
+    restart: unless-stopped
+
+  js:
+    build: ./js
+    container_name: js_app
+    restart: unless-stopped
+
+  go:
+    build: ./go
+    container_name: go_app
+    restart: unless-stopped
+
+  python:
+    build: ./python
+    container_name: python_app
+    restart: unless-stopped
+
+  ollama:
+    build: ./ollama
+    container_name: ollama_chat
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    restart: unless-stopped
+
+volumes:
+  ollama_data:

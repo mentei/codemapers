@@ -1,10 +1,11 @@
-"use client"
+"use client";
 import { useEffect, useState } from "react";
 import Editor from "@monaco-editor/react";
 import TerminalUI from "./Terminal";
 import { signOut, useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
 import Link from "next/link";
+import ChatBox from "../components/ChatBox";
 
 const defaultCode: Record<string, string> = {
   javascript: "console.log('Hello from JS!')",
@@ -22,7 +23,7 @@ export default function CloudIDE() {
   const [code, setCode] = useState(defaultCode["javascript"]);
   const [output, setOutput] = useState("");
   const [filename, setFilename] = useState("main");
-  const [files, setFiles] = useState([]);
+  const [files, setFiles] = useState<any[]>([]);
 
   const runCode = async () => {
     const res = await fetch("/api/execute", {
@@ -31,7 +32,7 @@ export default function CloudIDE() {
       body: JSON.stringify({ code, language }),
     });
     const data = await res.json();
-    setOutput(data.output);
+    setOutput(data.output || "No output");
   };
 
   const saveFile = async () => {
@@ -44,9 +45,14 @@ export default function CloudIDE() {
   };
 
   const fetchFiles = async () => {
-    const res = await fetch("/api/files/get");
-    const data = await res.json();
-    setFiles(data.files);
+    try {
+      const res = await fetch("/api/files/get");
+      const data = await res.json();
+      setFiles(Array.isArray(data.files) ? data.files : []);
+    } catch (err) {
+      console.error("Failed to fetch files", err);
+      setFiles([]);
+    }
   };
 
   useEffect(() => {
@@ -64,26 +70,32 @@ export default function CloudIDE() {
       <div className="w-64 bg-[#1a1d23] p-4 border-r border-cyan-700">
         <h2 className="text-xl font-bold mb-4 text-cyan-400">📁 Files</h2>
         <ul className="space-y-2">
-          {files.map((file: any) => (
-            <li
-              key={file._id}
-              onClick={() => {
-                setCode(file.content);
-                setFilename(file.filename);
-                setLanguage(file.language);
-              }}
-              className="cursor-pointer hover:text-cyan-400 text-sm"
-            >
-              📄 {file.filename}.{file.language}
-            </li>
-          ))}
+          {Array.isArray(files) && files.length > 0 ? (
+            files.map((file: any) => (
+              <li
+                key={file._id}
+                onClick={() => {
+                  setCode(file.content);
+                  setFilename(file.filename);
+                  setLanguage(file.language);
+                }}
+                className="cursor-pointer hover:text-cyan-400 text-sm"
+              >
+                📄 {file.filename}.{file.language}
+              </li>
+            ))
+          ) : (
+            <li className="text-gray-400 text-sm">No files found.</li>
+          )}
         </ul>
       </div>
 
       {/* Editor & Output */}
       <div className="flex-1 p-6">
         <div className="flex justify-between items-center mb-4">
-          <h1 className="text-2xl font-bold text-cyan-400">⚡ {session?.user?.name || "User"}'s Workspace</h1>
+          <h1 className="text-2xl font-bold text-cyan-400">
+            ⚡ {session?.user?.name || "User"}'s Workspace
+          </h1>
           <button
             onClick={() => signOut()}
             className="text-sm text-red-400 hover:underline"
@@ -147,7 +159,10 @@ export default function CloudIDE() {
           <pre className="text-green-300 whitespace-pre-wrap text-sm">{output}</pre>
         </div>
       </div>
+
+      {/* Terminal */}
       <TerminalUI />
+      <ChatBox  />
     </div>
   );
 }

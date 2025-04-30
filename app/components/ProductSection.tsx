@@ -10,24 +10,32 @@ import "slick-carousel/slick/slick-theme.css";
 import { FaArrowAltCircleDown, FaArrowAltCircleLeft, FaArrowAltCircleRight } from "react-icons/fa";
 
 const products = [
-  {
-    title: "CITRIX",
-    subtitle: "Airline Solution",
-    description: "An innovative solution that helps airlines to effectively manage customer complaints, feedback and queries. It integrates with the airline website and acts as a CRM system.",
-    logo: "/citrix.jpg",
-  },
-  {
-    title: "GitHub",
-    subtitle: "Expense Management Solution",
-    description: "An easy to use business travel & expense management solution that helps automate travel booking and tracking of all expenses using a single web-based interface.",
-    logo: "/github.png",
-  },
-  {
-    title: "napster",
-    subtitle: "Group Revenue Management",
-    description: "GroupRM is an innovative solution that helps airlines to efficiently control group traffic. It aids in increasing profitability by enabling the group analyst to better manage and optimize group sales.",
-    logo: "/napster.jpg",
-  },
+  
+    {
+      title: "Codemapes Cloud IDE",
+      subtitle: "Powerful Coding Environment",
+      description: "A fully cloud-based development platform with multi-language support, real-time execution, and secure storage — built especially for students in remote and underserved areas.",
+      logo: "/citrix.jpg",
+    },
+    {
+      title: "Open Source",
+      subtitle: "Contribute to Create Impact",
+      description: "Open source contributions that aim to build inclusive tools and technologies for empowering remote learners and developers worldwide.",
+      logo: "/github.png",
+    },
+    {
+      title: "Free Learning for All",
+      subtitle: "Accessible. Inclusive. Free.",
+      description: "A dedicated learning zone offering free resources, coding practice, and real-time project building opportunities — no cost, no barrier.",
+      logo: "/napster.jpg",
+    },
+    {
+      title: "Remote PC Access",
+      subtitle: "Learn Without Limits",
+      description: "Access cloud-hosted virtual PCs and development environments from anywhere, enabling students to build and learn without worrying about local hardware limitations.",
+      logo: "/pc.png",
+    }
+    
 ];
 
 const ProductSliderSection = () => {

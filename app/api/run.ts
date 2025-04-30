@@ -19,8 +19,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         if (error) return res.status(400).json({ output: stderr });
         res.status(200).json({ output: stdout });
       });
-    } catch (err) {
-      res.status(500).json({ error: `Execution error: ${err.message}` });
+    } catch (err:any) {
+      res.status(500).json({ error:`Execution error: ${err.message}` });
     }
   } else {
     res.status(400).json({ error: "Execution for this language is not supported yet." });

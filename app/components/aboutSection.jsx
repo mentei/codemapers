@@ -37,12 +37,10 @@ const AboutSection = () => {
       {/* Text Content */}
       <div className="w-full md:w-1/2">
         <h2 className="text-2xl text-white md:text-3xl font-semibold  mb-4">
-          Never doubt that a small group of thoughtful, committed people can change the world.
+        From remote corners to global impact — all it takes is a committed few.
         </h2>
         <p className="text-gray-500 text-lg leading-relaxed mb-6">
-          Our endeavor has been to create world class travel and aviation technology solutions. 
-          We believe in building strong partnerships with our customers to ensure that we are 
-          able to deliver a robust and cost efficient solution to them.
+        Codemapes is born out of the belief that no dream should be limited by geography. We are building developer-friendly tools that bring the power of cloud computing and coding infrastructure to students in remote and resource-limited areas — helping them unlock their true potential and contribute to the global tech future.
         </p>
 
         <button className="inline-flex items-center bg-white text-black border border-gray-300 shadow-lg rounded-full px-6 py-3 font-medium hover:bg-gray-100 transition">

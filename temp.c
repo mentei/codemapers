@@ -1,4 +1,2 @@
 #include <stdio.h>
-
-int main() 
-{ printf("Hello from  C lang bro  !\n"); return 0; }
+int main() { printf("Hello from C!\n"); return 0; }

@@ -2,13 +2,14 @@
 
 import { FaPhoneAlt, FaEnvelope, FaArrowRight } from 'react-icons/fa'
 import MotionWrapper from './MotionWrapper'
+import Image from 'next/image'
 
 const ContactSection = () => {
   return (
     <MotionWrapper className=" py-16 px-6 md:px-20">
       {/* Logos Row */}
       <div className="flex flex-wrap justify-center gap-10 mb-14">
-        {['lenovo', 'citrix', 'github', 'napster', 'microsoft', 'netevo'].map((logo, i) => (
+        {['Ai ', 'telegram', 'github', 'Discord', 'instagram', 'stackoverflow'].map((logo, i) => (
           <img
             key={i}
             src={`/logos/${logo}.png`} // Ensure these exist in /public/logos/
@@ -57,7 +58,7 @@ const ContactSection = () => {
         {/* Map Image */}
         <div>
           <img
-            src="/images/map.png" // Make sure this exists in /public/images
+            src="/map.png" // Make sure this exists in /public/images
             alt="map"
             className="w-full rounded-xl"
           />

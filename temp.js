@@ -1,1 +1,1 @@
-console.log('Hello from JS! babaa ')
+console.log('Hello from JS!')

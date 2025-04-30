@@ -13,13 +13,14 @@ const PressSection = () => {
       {/* Left Content */}
       <div className="flex-1 max-w-xl">
         <h2 className="text-2xl md:text-3xl font-bold mb-4">
-          Infiniti software solutions plans global expansion
+        Codemapers is Reimagining Cloud Learning for the Next Billion Coders.
         </h2>
         <p className="text-gray-600 text-sm md:text-base leading-relaxed mb-8">
-          Infiniti software solutions, a Chennai based travel technology service provider to corporate, 
-          claims to be leading the space in India. The company offers diverse solutions for the travel 
-          and aviation industry such as SME tool, expense management, group revenue management, business 
-          travel management, airline forecasting tool, and airline CRM solution.
+        Codemapers, a tech-forward cloud development platform based in India, is on a mission to democratize coding education and cloud-based software development. The platform offers accessible tools tailored for students, especially in remote and under-resourced areas.
+
+Codemapers provides a wide range of services including a free cloud IDE, remote virtual PC access, secure code storage, real-time code execution, and a dedicated learning environment. The company aims to empower learners and aspiring developers by offering cost-free, accessible, and scalable solutions that bridge the digital divide.
+
+Through open-source contribution, hands-on learning zones, and inclusive tech innovation, Codemapers is working to build a future where quality tech education is not limited by geography or economic background.
         </p>
         <button className="flex items-center border border-gray-300 rounded-full px-6 py-2 hover:bg-gray-50 transition text-sm font-medium">
           Read more

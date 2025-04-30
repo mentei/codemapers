@@ -46,15 +46,13 @@ const HeroSection = () => {
     >
       {/* Text Area */}
       <div className="z-10 max-w-xl py-20 text-center md:text-left">
-        <h1 className="text-5xl font-bold  m-8 P-4 leading-tight text-white">
-          MAKE   <br />
-          YOUR IDEAS  <br />
-          TO  SOLUTION
+        <h1 className="text-5xl font-bold  m-8 P-4 leading-tight text-white-300">
+          TURN  <br />
+          YOUR IDEAS 💡 <br />
+          TO  ACTION 
         </h1>
-        <p className="mt-4 capitalize text-gray-300 text-lg">
-         turn your  idea's into   <br />
-          business 
-        </p>
+        
+        
 
         <button className="mt-8 inline-flex items-center  text-black border border-gray-700 shadow-lg rounded-full px-6 py-3 font-bold capitalize  :hover bg-blue-500  transition">
          <Link href='/login'> get started</Link>

@@ -1,17 +1,21 @@
-import { NextResponse } from "next/server";
-import { OpenAI } from "openai";
-
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
-
 export async function POST(req: Request) {
   const { message } = await req.json();
 
-  const completion = await openai.chat.completions.create({
-    model: "gpt-3.5-turbo",
-    messages: [{ role: "user", content: message }],
+  const response = await fetch("http://localhost:11434/api/generate", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      model: "mistral",
+      prompt: message,
+      stream: false
+    }),
   });
 
-  return NextResponse.json({ reply: completion.choices[0].message.content });
+  const result = await response.json();
+
+  console.log("Ollama Response 🔍", result);
+
+  return Response.json({
+    reply: result.response || "No response from model.",
+  });
 }

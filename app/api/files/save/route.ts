@@ -5,19 +5,31 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "../../auth/[...nextauth]/route";
 
 export async function POST(req: NextRequest) {
-  await connectDB();
-  const session = await getServerSession(authOptions);
-  const body = await req.json();
+  try {
+    await connectDB();
+    const session = await getServerSession(authOptions);
+    console.log("Session in POST:", session);
 
-  if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    if (!session) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
 
-  const { filename, content, language } = body;
+    const body = await req.json();
+    console.log("Body received:", body);
 
-  const file = await File.findOneAndUpdate(
-    { userId: session.user?.email, filename },
-    { content, language },
-    { upsert: true, new: true }
-  );
+    const { filename, content, language } = body;
 
-  return NextResponse.json({ success: true, file });
+    const file = await File.findOneAndUpdate(
+      { userId: session.user?.email, filename },
+      { content, language },
+      { upsert: true, new: true }
+    );
+
+    console.log("File saved/updated:", file);
+
+    return NextResponse.json({ success: true, file });
+  } catch (err: any) {
+    console.error("POST error:", err);
+    return NextResponse.json({ error: "Internal Server Error", message: err.message }, { status: 500 });
+  }
 }

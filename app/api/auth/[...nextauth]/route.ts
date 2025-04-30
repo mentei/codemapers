@@ -1,4 +1,4 @@
-import NextAuth from "next-auth";
+// lib/auth.ts
 import type { AuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import GithubProvider from "next-auth/providers/github";
@@ -15,7 +15,3 @@ export const authOptions: AuthOptions = {
     }),
   ],
 };
-
-const handler = NextAuth(authOptions);
-
-export { handler as GET, handler as POST };

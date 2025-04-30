@@ -7,6 +7,8 @@ import { getServerSession } from "next-auth";
 import { authOptions } from 'app/api/auth/[...nextauth]/route'; 
 
 import Provider from 'app/client-provider'; 
+import Navbar from "./components/Navbar";
+import FooterSection from "./components/Footer";
 export const metadata: Metadata = {
   title: "codemapers",
   description: "learn and code ",
@@ -22,8 +24,12 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
-      <body>
-        <Provider session={session}>{children}</Provider>
+      <body className="m-4">
+        <Provider  session={session}>
+     
+          {children}
+    
+          </Provider>
       </body>
     </html>
   );
