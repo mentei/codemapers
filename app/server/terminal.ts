@@ -1,35 +1,43 @@
-// // server/terminalServer.ts
-// import express from "express";
-// import { createServer } from "http";
-// import { WebSocketServer } from "ws";
-// import pty from "node-pty";
+// server/terminalServer.ts
 
-// const app = express();
-// const server = createServer(app);
-// const wss = new WebSocketServer({ server });
+import express from "express";
+import { createServer } from "http";
 
-// wss.on("connection", (ws) => {
-//   const shell = pty.spawn("bash", [], {
-//     name: "xterm-color",
-//     cols: 80,
-//     rows: 24,
-//     cwd: process.env.HOME,
-//     env: process.env,
-//   });
+// 🧠 TypeScript declaration fix: use // @ts-ignore if types not found
+// @ts-ignore
+import { WebSocketServer } from "ws";
 
-//   shell.on("data", (data) => {
-//     ws.send(data);
-//   });
+// 🧠 TypeScript declaration fix for node-pty
+// @ts-ignore
+import pty from "node-pty";
 
-//   ws.on("message", (msg) => {
-//     shell.write(msg.toString());
-//   });
+const app = express();
+const server = createServer(app);
+const wss = new WebSocketServer({ server });
 
-//   ws.on("close", () => {
-//     shell.kill();
-//   });
-// });
+wss.on("connection", (ws) => {
+  const shell = pty.spawn("bash", [], {
+    name: "xterm-color",
+    cols: 80,
+    rows: 24,
+    cwd: process.env.HOME,
+    env: process.env,
+  });
 
-// server.listen(3001, () => {
-//   console.log("✅ Terminal server running on http://localhost:3001");
-// });
+  // ✅ Fix: specify type of 'data' to avoid 'any' warning
+  shell.on("data", (data: string) => {
+    ws.send(data);
+  });
+
+  ws.on("message", (msg: string | Buffer) => {
+    shell.write(msg.toString());
+  });
+
+  ws.on("close", () => {
+    shell.kill();
+  });
+});
+
+server.listen(3001, () => {
+  console.log("✅ Terminal server running on http://localhost:3001");
+});

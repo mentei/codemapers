@@ -4,7 +4,8 @@ import "./globals.css";
 
 //  Import getServerSession and authOptions
 import { getServerSession } from "next-auth";
-import { authOptions } from 'app/api/auth/[...nextauth]/route'; 
+// import { authOptions } from 'app/api/auth/[...nextauth]/route'; 
+import { authOptions } from "app/lib/auth"; // Adjust the import path as necessary
 
 import Provider from 'app/client-provider'; 
 import Navbar from "./components/Navbar";
@@ -20,17 +21,22 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   const session = await getServerSession(authOptions);
-  console.log("Session in RootLayout:", session); // Safe to log on server
 
   return (
     <html lang="en">
       <body className="m-4">
-        <Provider  session={session}>
-     
-          {children}
-    
-          </Provider>
+        <Provider session={session}>
+          <Navbar />
+          
+          {/* Added wrapper to ensure full-page layout */}
+          <div className="min-h-screen py-10">
+            {children}
+          </div>
+
+          <FooterSection />
+        </Provider>
       </body>
     </html>
   );
 }
+

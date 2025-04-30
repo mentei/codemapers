@@ -27,7 +27,7 @@ const products = [
       title: "Free Learning for All",
       subtitle: "Accessible. Inclusive. Free.",
       description: "A dedicated learning zone offering free resources, coding practice, and real-time project building opportunities — no cost, no barrier.",
-      logo: "/napster.jpg",
+      logo: "/open-source.png",
     },
     {
       title: "Remote PC Access",
@@ -60,7 +60,7 @@ const ProductSliderSection = () => {
       <div className="flex gap-6 items-start">
         {/* Left Label Box */}
         <div className="hidden md:flex flex-col items-center">
-          <div className="bg-blue-600 text-white font-bold text-xl text-center w-36 mt-4 rounded-lg flex items-center justify-center leading-tight">
+          <div className="bg-purple-600 text-white font-bold text-xl text-center w-36 mt-4 rounded-lg flex items-center justify-center leading-tight">
          <h1 className="text-2xl m-4 p-4  mt-8">
          PRO <br /> DUCTS
          <FaBuffer className=" ml-2  font-bold text-white" />

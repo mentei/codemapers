@@ -30,8 +30,8 @@ Through open-source contribution, hands-on learning zones, and inclusive tech in
 
       {/* Right Grid */}
       <div className="flex-1 grid grid-cols-2 gap-4 max-w-lg">
-        <div className="bg-blue-600 text-white font-bold text-lg flex items-center justify-center rounded-lg min-h-[130px]">
-          PRESS
+        <div className="bg-purple-600 text-white font-bold text-xl flex items-center justify-center rounded-lg min-h-[130px]">
+VISION
         </div>
         {images.map((img, index) => (
           <div key={index} className="overflow-hidden rounded-lg">

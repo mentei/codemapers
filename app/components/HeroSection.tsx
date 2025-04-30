@@ -42,20 +42,18 @@ const HeroSection = () => {
   return (
     <section
       ref={vantaRef}
-      className="relative min-h-screen flex flex-col md:flex-row items-center justify-between px-6 md:px-20 overflow-hidden text-white"
+      className="relative min-h-screen flex flex-col items-center justify-center px-6 md:px-20 overflow-hidden text-white"
     >
       {/* Text Area */}
-      <div className="z-10 max-w-xl py-20 text-center md:text-left">
-        <h1 className="text-5xl font-bold  m-8 P-4 leading-tight text-white-300">
-          TURN  <br />
+      <div className="z-10 max-w-xl py-20 text-center">
+        <h1 className="text-5xl font-extrabold leading-tight bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 text-transparent bg-clip-text">
+          TURN <br />
           YOUR IDEAS 💡 <br />
-          TO  ACTION 
+          TO ACTION
         </h1>
-        
-        
 
-        <button className="mt-8 inline-flex items-center  text-black border border-gray-700 shadow-lg rounded-full px-6 py-3 font-bold capitalize  :hover bg-blue-500  transition">
-         <Link href='/login'> get started</Link>
+        <button className="mt-8 inline-flex items-center text-white border border-gray-700 shadow-lg rounded-full px-6 py-3 font-bold capitalize hover:bg-blue-500 transition">
+          <Link href='/login'> Get Started </Link>
           <LiaArrowRightSolid className='ml-3'/>
         </button>
       </div>
