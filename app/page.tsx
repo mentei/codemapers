@@ -13,15 +13,7 @@ import './globals.css';
 import MotionWrapper from './components/MotionWrapper';
 import Navbar from './components/Navbar';
 
-// import { Inter } from 'next/font/google';
-// const inter = Inter({ subsets: ['latin'] });
-// export const metadata = {
-//   title: 'Learn4All',
-//   description: 'An Indian learning platform for students with low-end PCs, providing free courses, rental PCs, and an opportunity to teach and earn.',
-// };
-// export const dynamic = 'force-dynamic';
-// export const revalidate = 0;
-// export const runtime = 'edge';
+
 
 const Home: React.FC = () => {
   return (
