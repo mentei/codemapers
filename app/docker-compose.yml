@@ -3,57 +3,57 @@ version: '3.8'
 services:
   rust:
     build:
-      context: ./Docker/rust
-      dockerfile: ./Docker/rust.dockerfile
+      context: .
+      dockerfile: docker/rust.Dockerfile
     container_name: rust_app
     restart: unless-stopped
 
   java:
     build:
-      context: ./Docker/java
-      dockerfile: ./Docker/java.dockerfile
+      context: .
+      dockerfile: docker/java.Dockerfile
     container_name: java_app
     restart: unless-stopped
 
   c:
     build:
-      context: ./Docker/c
-      dockerfile: ./Docker/c.dockerfile
+      context: .
+      dockerfile: docker/c.Dockerfile
     container_name: c_app
     restart: unless-stopped
 
   cpp:
     build:
-      context: ./Docker/cpp
-      dockerfile: ./Docker/cpp.dockerfile
+      context: .
+      dockerfile: docker/cpp.Dockerfile
     container_name: cpp_app
     restart: unless-stopped
 
   js:
     build:
-      context: ./Docker/js
-      dockerfile: ./Docker/js.dockerfile
+      context: .
+      dockerfile: docker/node-runner.Dockerfile
     container_name: js_app
     restart: unless-stopped
 
   go:
     build:
-      context: ./Docker/go
-      dockerfile: ./Docker/go.dockerfile
+      context: .
+      dockerfile: docker/go.Dockerfile
     container_name: go_app
     restart: unless-stopped
 
   python:
     build:
-      context: ./Docker/python
-      dockerfile: ./Docker/python.dockerfile
+      context: .
+      dockerfile: docker/python.Dockerfile
     container_name: python_app
     restart: unless-stopped
 
   ollama:
     build:
-      context: ./Docker/ollama
-      dockerfile: ./Docker/ollama.dockerfile
+      context: .
+      dockerfile: docker/ollama.dockerfile
     container_name: ollama_chat
     ports:
       - "11434:11434"
