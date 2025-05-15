@@ -27,7 +27,7 @@ export default function Admin() {
         <h1 className="text-5xl font-extrabold drop-shadow-lg">
           Welcome, <span className="text-yellow-300">{session?.user?.name || "User"} 🎉</span>
         </h1>
-        <p className="text-lg text-white/80 mt-4">rom zero to launch — your dev power zone awaits.   </p>
+        <p className="text-lg text-white/80 mt-4">From zero to launch — your dev power zone awaits.   </p>
       </div>
 
       {/* ZONES SECTIONS */}
