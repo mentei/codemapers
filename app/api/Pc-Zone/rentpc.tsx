@@ -5,13 +5,13 @@ import { Button } from 'app/components/ui/button';
 import Header from './Header';
 import { useSession } from "next-auth/react";
 
-// Sample PCs List
+// Sample PC Rental Listings
 const initialPCs = [
-  { id: 1, name: 'Basic PC - i3', cpu: 'Intel i3', gen: 10, ram: '8GB', storage: '256GB SSD', price: 300, rent: 20, owner: "Admin", image: 'https://plus.unsplash.com/premium_photo-1681160405580-a68e9c4707f9?q=80&w=1965&auto=format&fit=crop' },
-  { id: 2, name: 'Mid PC - i5', cpu: 'Intel i5', gen: 12, ram: '16GB', storage: '512GB SSD', price: 500, rent: 35, owner: "Admin", image: 'https://images.pexels.com/photos/1999463/pexels-photo-1999463.jpeg?auto=compress' },
+  { id: 1, name: 'High-End Gaming PC', cpu: 'Intel i7', gen: 12, ram: '32GB', storage: '1TB SSD', price: 1000, rent: 80, owner: "Admin", image: 'https://images.pexels.com/photos/1999463/pexels-photo-1999463.jpeg?auto=compress' },
+  { id: 2, name: 'Budget Workstation', cpu: 'Intel i5', gen: 10, ram: '16GB', storage: '512GB SSD', price: 600, rent: 45, owner: "Admin", image: 'https://plus.unsplash.com/premium_photo-1681160405580-a68e9c4707f9?q=80&w=1965&auto=format&fit=crop' },
 ];
 
-export default function PCStorePage() {
+export default function RentPCPage() {
   const { data: session } = useSession();
   const username = session?.user?.name || "Guest";
   const [pcs, setPcs] = useState(initialPCs);
@@ -34,8 +34,8 @@ export default function PCStorePage() {
   return (
     <div className="p-8 space-y-8">
       <Header />
-      <h1 className="text-3xl font-bold text-center">👋 Welcome, {username}!</h1>
-      <h2 className="text-2xl font-bold text-center">🖥️ PC Rent / Buy Store</h2>
+      <h1 className="text-3xl font-bold text-center">📤 Rent Out Your PC</h1>
+      <p className="text-center text-lg font-semibold">👋 Hello, {username}! You can list your PC for rent here.</p>
 
       {/* PC Listings */}
       <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -69,18 +69,6 @@ export default function PCStorePage() {
           <input placeholder="Image URL" value={newPC.image} onChange={(e) => setNewPC({ ...newPC, image: e.target.value })} className="w-full p-2 rounded border" />
         </div>
         <Button className="mt-4" onClick={rentOutPC}>📤 List My PC for Rent</Button>
-      </section>
-
-      {/* Get Your Custom PC */}
-      <section className="mt-12 p-6 bg-gray-100 dark:bg-gray-900 rounded-2xl shadow-xl">
-        <h2 className="text-2xl font-bold mb-4">🛠️ Build Your Custom PC</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <input placeholder="CPU Type (i3, i5, i7)" className="w-full p-2 rounded border" />
-          <input placeholder="RAM Size (8GB, 16GB, 32GB)" className="w-full p-2 rounded border" />
-          <input placeholder="Storage Type (SSD, HDD)" className="w-full p-2 rounded border" />
-          <input placeholder="Price (INR)" className="w-full p-2 rounded border" />
-        </div>
-        <Button className="mt-4">🚀 Get Custom PC</Button>
       </section>
     </div>
   );

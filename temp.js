@@ -1,1 +1,1 @@
-console.log("Hello JavaScript!");
+ for(let i = 0; i < 100; i++){ console.log("Jai Shree Ram"); }

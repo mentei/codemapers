@@ -1,43 +1,22 @@
-// server/terminalServer.ts
+import WebSocket from "ws";
 
-import express from "express";
-import { createServer } from "http";
+const server = new WebSocket.Server({ port: 3001 });
 
-// 🧠 TypeScript declaration fix: use // @ts-ignore if types not found
-// @ts-ignore
-import { WebSocketServer } from "ws";
+server.on("connection", (socket) => {
+  console.log("✅ Terminal connected!");
 
-// 🧠 TypeScript declaration fix for node-pty
-// @ts-ignore
-import pty from "node-pty";
-
-const app = express();
-const server = createServer(app);
-const wss = new WebSocketServer({ server });
-
-wss.on("connection", (ws) => {
-  const shell = pty.spawn("bash", [], {
-    name: "xterm-color",
-    cols: 80,
-    rows: 24,
-    cwd: process.env.HOME,
-    env: process.env,
+  socket.on("message", (data) => {
+    console.log("Received:", data.toString());
+    socket.send(`🖥️ Output: ${data}`); // ✅ Echo response for testing
   });
 
-  // ✅ Fix: specify type of 'data' to avoid 'any' warning
-  shell.on("data", (data: string) => {
-    ws.send(data);
+  socket.on("close", () => {
+    console.log("❌ Terminal disconnected!");
   });
 
-  ws.on("message", (msg: string | Buffer) => {
-    shell.write(msg.toString());
-  });
-
-  ws.on("close", () => {
-    shell.kill();
+  socket.on("error", (err) => {
+    console.error("⚠️ Terminal Error:", err);
   });
 });
 
-server.listen(3001, () => {
-  console.log("✅ Terminal server running on http://localhost:3001");
-});
+console.log("🚀 WebSocket Terminal Server started on ws://localhost:3001");
