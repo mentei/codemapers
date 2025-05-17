@@ -22,9 +22,9 @@ export default function ChatSupport() {
       });
 
       const data = await res.json();
-      setChat([...chat, { sender: "👤 You", message: input }, { sender: "🤖 AI", message: data.reply }]);
+      setChat([...chat, { sender: "👤 You", message: input }, { sender: "Bhagi AI", message: data.reply }]);
     } catch (error) {
-      setChat([...chat, { sender: "👤 You", message: input }, { sender: "⚠️ AI", message: "Failed to respond" }]);
+      setChat([...chat, { sender: "👤 You", message: input }, { sender: "Bhagi  AI", message: "Failed to respond" }]);
     }
 
     setLoading(false);
@@ -42,7 +42,7 @@ export default function ChatSupport() {
         <div className="w-80 h-[500px] bg-[#0a0a0a] text-white shadow-xl rounded-xl flex flex-col overflow-hidden border border-[#00f3ff]">
           {/* Header */}
           <div className="bg-[#00f3ff] text-black p-3 flex justify-between items-center shadow-neon">
-            <h2 className="font-bold tracking-wide text-lg">⚡ Chat Support</h2>
+            <h2 className="font-bold tracking-wide text-lg">⚡ Chat With Bhagi  AI 🧘</h2>
             <button onClick={() => setOpen(false)} className="text-black text-xl hover:text-gray-700 transition">
               ×
             </button>

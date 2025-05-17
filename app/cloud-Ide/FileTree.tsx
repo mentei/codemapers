@@ -57,7 +57,7 @@ export default function FileTree({ onSelectFile }: { onSelectFile: (file: File) 
           className="cursor-pointer hover:text-cyan-400 flex items-center"
           onClick={() => onSelectFile(file)}
         >
-          <AiFillFile className="mr-2 text-gray-500" /> {file.filename}.{file.language}
+          <AiFillFile className="mr-2 text-gray-500" /> {file.filename}
         </div>
       )}
       {file.isOpen && file.children && file.children.map(renderFileTree)}
